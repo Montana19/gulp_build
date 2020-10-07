@@ -55,15 +55,16 @@ function html() {
 
 function css() {
 	return src(path.src.css)
-		.pipe(scss({
-			outputStyle: "expanded"
-		}))
+		.pipe(
+			scss({
+				outputStyle: "expanded"
+			}))
 		.pipe(
 			group_media()
 		)
 		.pipe(
 			autoPrefixer({
-				overrideBrowserlist: ["last 5 versions"],
+				overrideBrowserslist: ["last 5 versions"],
 				cascade: true
 			})
 		)
