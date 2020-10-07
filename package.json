@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/Montana19/test_git#readme",
   "devDependencies": {
+    "browser-sync": "^2.26.12",
     "gulp": "^4.0.2"
-  }
+  },
+  "dependencies": {}
 }
