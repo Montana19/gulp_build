@@ -29,12 +29,19 @@ let path = {
 
 let { src, dest } = require('gulp'),
 	gulp = require('gulp'),
-	browsersync = require('browser-sync').create();
+	browsersync = require("browser-sync").create();
 
 function browserSync(params) {
 	browsersync.init({
 		server: {
-			baseDir
-		}
+			baseDir: "./" + project_folder + "/"
+		},
+		port: 3000,
+		notify: false
 	})
+
+	let watch = gulp.parallel(browserSync);
+
+	exports.watch = watch;
+	exports.default = watch;
 }
