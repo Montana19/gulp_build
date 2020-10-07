@@ -31,7 +31,7 @@ let { src, dest } = require('gulp'),
 	fileinclude = require("gulp-file-include"),
 	del = require("del"),
 	scss = require("gulp-sass"),
-	autoprefixer = require("gulp-autoprefixer"),
+	autoPrefixer = require("gulp-autoprefixer"),
 	group_media = require("gulp-group-css-media-queries"),
 	clean_css = require("gulp-clean-css"),
 	rename = require("gulp-rename");
@@ -62,7 +62,7 @@ function css() {
 			group_media()
 		)
 		.pipe(
-			autoprefixer({
+			autoPrefixer({
 				overrideBrowserlist: ["last 5 versions"],
 				cascade: true
 			})
