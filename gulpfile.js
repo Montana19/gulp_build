@@ -27,7 +27,8 @@ let path = {
 
 let { src, dest } = require('gulp'),
 	gulp = require('gulp'),
-	browsersync = require("browser-sync").create();
+	browsersync = require("browser-sync").create(),
+	fileinclude = require("gulp-file-include");
 
 function browserSync() {
 	browsersync.init({
@@ -41,6 +42,7 @@ function browserSync() {
 
 function html() {
 	return src(path.src.html)
+		.pipe(fileinclude())
 		.pipe(dest(path.build.html))
 		.pipe(browsersync.stream())
 }
