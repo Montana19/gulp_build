@@ -29,7 +29,8 @@ let { src, dest } = require('gulp'),
 	gulp = require('gulp'),
 	browsersync = require("browser-sync").create(),
 	fileinclude = require("gulp-file-include"),
-	del = require("del");
+	del = require("del"),
+	scss = require("gulp-sass");
 
 function browserSync() {
 	browsersync.init({
@@ -48,6 +49,15 @@ function html() {
 		.pipe(browsersync.stream())
 }
 
+function css() {
+	return src(path.src.css)
+		.pipe(scss({
+			outputStyle: "expanded"
+		}))
+		.pipe(dest(path.build.css))
+		.pipe(browsersync.stream())
+}
+
 function watchFiles(params) {
 	gulp.watch([path.watch.html], html);
 }
@@ -56,9 +66,10 @@ function clean(params) {
 	return del(path.clean);
 }
 
-let build = gulp.series(clean, html);
+let build = gulp.series(clean, gulp.parallel(css, html));
 let watch = gulp.parallel(build, watchFiles, browserSync);
 
+exports.css = css;
 exports.html = html;
 exports.build = build;
 exports.watch = watch;
