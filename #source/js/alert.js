@@ -1,3 +1,3 @@
-export function sonya(params) {
+export function sonya() {
 	alert('privet sonya!')
 }

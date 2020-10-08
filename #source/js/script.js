@@ -1,7 +1,5 @@
-import sonya from './alert.js';
+import { sonya } from './alert.js';
 
-function alert(params) {
+document.addEventListener('DOMContentLoaded', () => {
 	sonya();
-}
-
-element.index ?? -1;
+});
