@@ -35,7 +35,9 @@ let { src, dest } = require('gulp'),
 	group_media = require("gulp-group-css-media-queries"),
 	clean_css = require("gulp-clean-css"),
 	rename = require("gulp-rename"),
-	uglify = require("gulp-uglify-es").default;
+	uglify = require("gulp-uglify-es").default,
+	imagemin = require("gulp-imagemin"),
+	babel = require("gulp-babel");
 
 function browserSync() {
 	browsersync.init({
@@ -51,6 +53,12 @@ function html() {
 	return src(path.src.html)
 		.pipe(fileinclude())
 		.pipe(dest(path.build.html))
+		.pipe(browsersync.stream())
+}
+
+function images() {
+	return src(path.src.img)
+		.pipe(dest(path.build.img))
 		.pipe(browsersync.stream())
 }
 
@@ -90,6 +98,14 @@ function js() {
 		.pipe(browsersync.stream())
 }
 
+gulp.task("default", function () {
+	return gulp.src(path.src.js)
+		.pipe(babel({
+			presets: ["@babel/preset-env"]
+		}))
+		.pipe(gulp.dest(path.build.js));
+});
+
 function watchFiles(params) {
 	gulp.watch([path.watch.html], html);
 	gulp.watch([path.watch.css], css);
@@ -100,7 +116,7 @@ function clean(params) {
 	return del(path.clean);
 }
 
-let build = gulp.series(clean, gulp.parallel(js, css, html));
+let build = gulp.series(clean, gulp.parallel(js, css, html), gulp.task("default"));
 let watch = gulp.parallel(build, watchFiles, browserSync);
 
 exports.css = css;
