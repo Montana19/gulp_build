@@ -1,3 +1,1 @@
-export function sonya() {
-	alert('privet sonya!')
-}
+alert('privet sonya!')

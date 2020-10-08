@@ -12,7 +12,7 @@ let path = {
 	src: {
 		html: [source_folder + "/*.html", "!" + source_folder + "/_*.html"],
 		css: source_folder + "/scss/style.scss",
-		js: source_folder + "/js/*.js",
+		js: source_folder + "/js/script.js",
 		img: source_folder + "/img/**/*.{png, jpg, webp, svg, ico, gif}",
 		fonts: source_folder + "/fonts/*.ttf",
 	},
@@ -36,8 +36,7 @@ let { src, dest } = require('gulp'),
 	clean_css = require("gulp-clean-css"),
 	rename = require("gulp-rename"),
 	uglify = require("gulp-uglify-es").default,
-	imagemin = require("gulp-imagemin"),
-	babel = require("gulp-babel");
+	imagemin = require("gulp-imagemin");
 
 function browserSync() {
 	browsersync.init({
@@ -98,14 +97,6 @@ function js() {
 		.pipe(browsersync.stream())
 }
 
-gulp.task("default", function () {
-	return gulp.src(path.src.js)
-		.pipe(babel({
-			presets: ["@babel/preset-env"]
-		}))
-		.pipe(gulp.dest(path.build.js));
-});
-
 function watchFiles(params) {
 	gulp.watch([path.watch.html], html);
 	gulp.watch([path.watch.css], css);
@@ -116,7 +107,7 @@ function clean(params) {
 	return del(path.clean);
 }
 
-let build = gulp.series(clean, gulp.parallel(js, css, html), gulp.task("default"));
+let build = gulp.series(clean, gulp.parallel(js, css, html));
 let watch = gulp.parallel(build, watchFiles, browserSync);
 
 exports.css = css;
