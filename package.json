@@ -34,7 +34,6 @@
 		"gulp-webp": "^4.0.1",
 		"gulp-webp-css": "^1.1.0",
 		"gulp-webp-html": "^1.0.2",
-		"gulp-webpcss": "^1.1.1"
 	},
 	"dependencies": {
 		"gulp-group-css-media-queries": "^1.2.2"
