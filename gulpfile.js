@@ -36,8 +36,8 @@ let { src, dest } = require('gulp'),
 	clean_css = require("gulp-clean-css"),
 	rename = require("gulp-rename"),
 	uglify = require("gulp-uglify-es").default,
-	imagemin = require("gulp-imagemin");
-// webp = require("gulp-webp");
+	imagemin = require("gulp-imagemin"),
+	webp = require("gulp-webp");
 
 function browserSync() {
 	browsersync.init({
