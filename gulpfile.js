@@ -13,14 +13,14 @@ let path = {
 		html: [source_folder + "/*.html", "!" + source_folder + "/_*.html"],
 		css: source_folder + "/scss/style.scss",
 		js: source_folder + "/js/script.js",
-		img: source_folder + "/img/*.{png, jpg, webp, svg, ico, gif}",
+		img: source_folder + "/img/**/*.{png, jpg, webp, svg, ico, gif}",
 		fonts: source_folder + "/fonts/*.ttf",
 	},
 	watch: {
 		html: source_folder + "/**/*.html",
 		css: source_folder + "/scss/**/*.scss",
 		js: source_folder + "/js/**/*.js",
-		img: source_folder + "/img/*.{png, jpg, webp, svg, ico, gif}",
+		img: source_folder + "/img/**/*.{png, jpg, webp, svg, ico, gif}",
 	},
 	clean: "./" + project_folder + "/"
 }
@@ -94,17 +94,10 @@ function js() {
 
 function images() {
 	return src(path.src.img)
-		// .pipe(
-		// 	webp({
-		// 		quality: 70
-		// 	})
-		// )
-		// .pipe(dest(path.build.img))
-		// .pipe(src(path.src.img))
 		.pipe(
 			imagemin({
 				progressive: true,
-				svgoPlugins: [{ removeviewbox: false }],
+				svgoplugins: [{ removeViewBox: false }],
 				interlaced: true,
 				optimizationlevel: 3 // 0 to 7
 			})
