@@ -13,10 +13,6 @@
   font-weight: 400;
   font-style: normal;
 }
-
-div {
-  background: url("../img/sample.jpg") 0 0 no-repeat;
-}
 @supports (-webkit-appearance:none){
-div{background:url("../img/sample.webp") 0 0 no-repeat}
+
 }

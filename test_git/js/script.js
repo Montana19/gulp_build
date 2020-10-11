@@ -1,1 +1,1 @@
-alert('privet sonya!')
+// alert('privet sonya!')
