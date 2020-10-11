@@ -1,5 +1,5 @@
 {
-	"name": "test_git",
+	"name": "gulp_build",
 	"version": "1.0.0",
 	"description": "Сборка GULP",
 	"main": "index.html",
@@ -8,14 +8,14 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/Montana19/test_git.git"
+		"url": "git+https://github.com/Montana19/gulp_build.git"
 	},
 	"author": "Montana",
 	"license": "ISC",
 	"bugs": {
-		"url": "https://github.com/Montana19/test_git/issues"
+		"url": "https://github.com/Montana19/gulp_build/issues"
 	},
-	"homepage": "https://github.com/Montana19/test_git#readme",
+	"homepage": "https://github.com/Montana19/gulp_build#readme",
 	"devDependencies": {
 		"browser-sync": "^2.26.12",
 		"chokidar": "^3.4.2",
